@@ -131,3 +131,11 @@ add_action('elementor/init', 'load_custom_widgets');
 add_filter('wp_revisions_to_keep', function ($num, $post) {
     return 3;
 }, 10, 2);
+
+add_shortcode('bcn_display', function () {
+    if (function_exists('bcn_display')) {
+        ob_start();
+        bcn_display();
+        return ob_get_clean();
+    }
+});
