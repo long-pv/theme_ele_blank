@@ -5,7 +5,12 @@ define('TEMPLATE_PATH', CHILD_PATH . '/elementor-widgets/template/');
 if (!defined('_S_VERSION')) {
     define('_S_VERSION', '1.0.0');
 }
-
+if (!defined('WP_MEMORY_LIMIT')) {
+    define('WP_MEMORY_LIMIT', '256M');
+}
+if (!defined('WP_MAX_MEMORY_LIMIT')) {
+    define('WP_MAX_MEMORY_LIMIT', '512M');
+}
 // turn on auto update core wp
 // define('WP_AUTO_UPDATE_CORE', true); // Bật cập nhật tự động WordPress
 // define('AUTOMATIC_UPDATER_DISABLED', false); // Đảm bảo cập nhật tự động không bị tắt
