@@ -144,3 +144,25 @@ add_shortcode('bcn_display', function () {
         return ob_get_clean();
     }
 });
+
+// remove wp_version
+function remove_wp_version_strings($src)
+{
+    global $wp_version;
+    $query_string = parse_url($src, PHP_URL_QUERY);
+    if ($query_string) {
+        parse_str($query_string, $query);
+        if (!empty($query['ver']) && $query['ver'] === $wp_version) {
+            $src = remove_query_arg('ver', $src);
+        }
+    }
+    return $src;
+}
+add_filter('script_loader_src', 'remove_wp_version_strings');
+add_filter('style_loader_src', 'remove_wp_version_strings');
+function remove_version_wp()
+{
+    return '';
+}
+add_filter('the_generator', 'remove_version_wp');
+// end remove wp_version
