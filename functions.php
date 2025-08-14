@@ -32,14 +32,14 @@ add_filter('auto_update_core', '__return_true'); // Tự động cập nhật Wo
  */
 function child_theme_scripts()
 {
-    wp_enqueue_style('child_theme-style', CHILD_URI, array(), _S_VERSION);
+    // wp_enqueue_style('child_theme-style', CHILD_URI, array(), _S_VERSION);
 
     // normalize
-    wp_enqueue_style('child_theme-style-normalize', CHILD_URI . '/assets/inc/normalize/normalize.css', array(), _S_VERSION);
+    // wp_enqueue_style('child_theme-style-normalize', CHILD_URI . '/assets/inc/normalize/normalize.css', array(), _S_VERSION);
 
     // bootstrap grid
-    wp_enqueue_style('child_theme-style-grid', CHILD_URI . '/assets/inc/bootstrap/grid.css', array(), _S_VERSION);
-    wp_enqueue_script('child_theme-script-bootstrap', CHILD_URI . '/assets/inc/bootstrap/bootstrap.min.js', array('jquery'), _S_VERSION, true);
+    // wp_enqueue_style('child_theme-style-grid', CHILD_URI . '/assets/inc/bootstrap/grid.css', array(), _S_VERSION);
+    // wp_enqueue_script('child_theme-script-bootstrap', CHILD_URI . '/assets/inc/bootstrap/bootstrap.min.js', array('jquery'), _S_VERSION, true);
 
     // jquery ui
     // wp_enqueue_style('child_theme-style-jquery-ui', CHILD_URI . '/assets/inc/jquery-ui/jquery-ui.css', array(), _S_VERSION);
@@ -58,7 +58,7 @@ function child_theme_scripts()
     // wp_enqueue_script('child_theme-script-validate', CHILD_URI . '/assets/inc/validate/jquery.validate.min.js', array('jquery'), _S_VERSION, true);
 
     // matchHeight
-    wp_enqueue_script('child_theme-script-matchHeight', CHILD_URI . '/assets/inc/matchHeight/jquery.matchHeight.js', array('jquery'), _S_VERSION, true);
+    // wp_enqueue_script('child_theme-script-matchHeight', CHILD_URI . '/assets/inc/matchHeight/jquery.matchHeight.js', array('jquery'), _S_VERSION, true);
 
     // intlTelInput
     // wp_enqueue_style('child_theme-style-intlTelInput', CHILD_URI . '/assets/inc/intlTelInput/intlTelInput.css', array(), _S_VERSION);
