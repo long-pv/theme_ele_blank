@@ -134,7 +134,7 @@ add_action('elementor/init', 'load_custom_widgets');
 
 // tối đa revision
 add_filter('wp_revisions_to_keep', function ($num, $post) {
-    return 3;
+    return 5;
 }, 10, 2);
 
 add_shortcode('bcn_display', function () {
@@ -166,3 +166,25 @@ function remove_version_wp()
 }
 add_filter('the_generator', 'remove_version_wp');
 // end remove wp_version
+
+// Loại bỏ filter Yoast SEO khỏi danh sách Post
+function hide_yoast_seo_filters()
+{
+?>
+    <style>
+        #wpseo-filter,
+        #wpseo-readability-filter,
+        label[for="wpseo-filter"],
+        label[for="wpseo-readability-filter"] {
+            display: none !important;
+        }
+    </style>
+<?php
+}
+add_action('admin_head', 'hide_yoast_seo_filters');
+
+// tắt thông báo rác
+add_action('admin_head', function () {
+    remove_all_actions('admin_notices');
+    remove_all_actions('all_admin_notices');
+});
