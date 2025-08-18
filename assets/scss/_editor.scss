@@ -1,4 +1,6 @@
 .editor {
+    color: $color_text;
+
     &>* {
         &:last-child {
             margin-bottom: 0px;
