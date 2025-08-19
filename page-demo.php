@@ -2,7 +2,7 @@
 // Template name: Demo
 get_header();
 ?>
-<div class="container">
+<div class="lv_container">
     <!-- ===== Modal ===== -->
     <h2>🔹 Modal</h2>
     <button class="open-modal" data-target="#myModal1">Mở Modal 1</button>

@@ -32,9 +32,6 @@ add_filter('auto_update_core', '__return_true'); // Tự động cập nhật Wo
  */
 function child_theme_scripts()
 {
-    // bootstrap grid
-    wp_enqueue_style('child_theme-style-grid', CHILD_URI . '/assets/inc/bootstrap/grid.css', array(), _S_VERSION);
-
     // slick
     wp_enqueue_style('child_theme-style-slick-theme', CHILD_URI . '/assets/inc/slick/slick-theme.css', array(), _S_VERSION);
     wp_enqueue_style('child_theme-style-slick', CHILD_URI . '/assets/inc/slick/slick.css', array(), _S_VERSION);
