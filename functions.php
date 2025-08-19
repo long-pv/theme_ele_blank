@@ -20,13 +20,6 @@ add_filter('auto_update_plugin', '__return_true'); // Tự động cập nhật 
 add_filter('auto_update_theme', '__return_true'); // Tự động cập nhật theme
 add_filter('auto_update_core', '__return_true'); // Tự động cập nhật WordPress core (cả bản lớn & nhỏ)
 
-// turn off auto update core wp
-// define('AUTOMATIC_UPDATER_DISABLED', true); // Vô hiệu hóa mọi cập nhật tự động
-// define('WP_AUTO_UPDATE_CORE', false); // Ngăn cập nhật core WordPress
-// define('DISALLOW_FILE_MODS', true); // Ngăn chỉnh sửa file từ Admin
-// define('DISALLOW_FILE_EDIT', true); // Tắt trình chỉnh sửa file trong Dashboard
-// add_filter('auto_update_plugin', '__return_false'); // Ngăn cập nhật tự động plugin
-
 /**
  * Enqueue scripts and styles.
  */
@@ -42,11 +35,11 @@ function child_theme_scripts()
     $main_js_file_path = CHILD_PATH . '/assets/js/main.js';
     $ver_main_css = file_exists($main_css_file_path) ? filemtime($main_css_file_path) : _S_VERSION;
     $ver_main_js = file_exists($main_js_file_path) ? filemtime($main_js_file_path) : _S_VERSION;
-    wp_enqueue_style('dev_theme-style-main', CHILD_URI . '/assets/css/main.css', array(), $ver_main_css);
-    wp_enqueue_script('dev_theme-script-main', CHILD_URI . '/assets/js/main.js', array('jquery'), $ver_main_js, true);
+    wp_enqueue_style('child_theme-style-main', CHILD_URI . '/assets/css/main.css', array(), $ver_main_css);
+    wp_enqueue_script('child_theme-script-main', CHILD_URI . '/assets/js/main.js', array('jquery'), $ver_main_js, true);
 
     // ajax admin
-    wp_localize_script('hello-child-ajax_url', 'custom_ajax', array('ajax_url' => admin_url('admin-ajax.php')));
+    wp_localize_script('child_theme-script-main', 'custom_ajax', array('ajax_url' => admin_url('admin-ajax.php')));
 }
 add_action('wp_enqueue_scripts', 'child_theme_scripts');
 
@@ -113,28 +106,6 @@ add_shortcode('bcn_display', function () {
         return ob_get_clean();
     }
 });
-
-// remove wp_version
-function remove_wp_version_strings($src)
-{
-    global $wp_version;
-    $query_string = parse_url($src, PHP_URL_QUERY);
-    if ($query_string) {
-        parse_str($query_string, $query);
-        if (!empty($query['ver']) && $query['ver'] === $wp_version) {
-            $src = remove_query_arg('ver', $src);
-        }
-    }
-    return $src;
-}
-add_filter('script_loader_src', 'remove_wp_version_strings');
-add_filter('style_loader_src', 'remove_wp_version_strings');
-function remove_version_wp()
-{
-    return '';
-}
-add_filter('the_generator', 'remove_version_wp');
-// end remove wp_version
 
 // Loại bỏ filter Yoast SEO khỏi danh sách Post
 function hide_yoast_seo_filters()
