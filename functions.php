@@ -36,21 +36,21 @@ function child_theme_scripts()
 add_action('wp_enqueue_scripts', 'child_theme_scripts');
 
 // The function "write_log" is used to write debug logs to a file in PHP.
-function write_log($log = null, $title = 'Debug')
-{
-    if ($log) {
-        if (is_array($log) || is_object($log)) {
-            $log = print_r($log, true);
-        }
+// function write_log($log = null, $title = 'Debug')
+// {
+//     if ($log) {
+//         if (is_array($log) || is_object($log)) {
+//             $log = print_r($log, true);
+//         }
 
-        $timestamp = date('Y-m-d H:i:s');
-        $text = '[' . $timestamp . '] : ' . $title . ' - Log: ' . $log . "\n";
-        $log_file = WP_CONTENT_DIR . '/debug.log';
-        $file_handle = fopen($log_file, 'a');
-        fwrite($file_handle, $text);
-        fclose($file_handle);
-    }
-}
+//         $timestamp = date('Y-m-d H:i:s');
+//         $text = '[' . $timestamp . '] : ' . $title . ' - Log: ' . $log . "\n";
+//         $log_file = WP_CONTENT_DIR . '/debug.log';
+//         $file_handle = fopen($log_file, 'a');
+//         fwrite($file_handle, $text);
+//         fclose($file_handle);
+//     }
+// }
 
 // Tạo menu theme settings chung
 // Setup theme setting page
@@ -83,7 +83,7 @@ function load_custom_widgets()
 {
     require CHILD_PATH . '/elementor-widgets/index.php';
 }
-add_action('elementor/init', 'load_custom_widgets');
+// add_action('elementor/init', 'load_custom_widgets');
 // end
 
 // tối đa revision
@@ -98,19 +98,3 @@ add_shortcode('bcn_display', function () {
         return ob_get_clean();
     }
 });
-
-// Loại bỏ filter Yoast SEO khỏi danh sách Post
-function hide_yoast_seo_filters()
-{
-?>
-    <style>
-        #wpseo-filter,
-        #wpseo-readability-filter,
-        label[for="wpseo-filter"],
-        label[for="wpseo-readability-filter"] {
-            display: none !important;
-        }
-    </style>
-<?php
-}
-// add_action('admin_head', 'hide_yoast_seo_filters');

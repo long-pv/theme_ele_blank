@@ -4,7 +4,8 @@ $color_secondary: var(--e-global-color-secondary);
 $color_text: var(--e-global-color-text);
 $color_accent: var(--e-global-color-accent);
 
-body {
+body,
+html {
     line-height: 1.5 !important;
 }
 
